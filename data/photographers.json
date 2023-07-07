@@ -385,12 +385,12 @@
 		{
 			"id": 5234343,
 			"photographerId": 243,
-			"title": "Wild horses in the mountains",
+			"title": "Wild horses in mountains",
 			"video": "Animals_Wild_Horses_in_the_mountains.mp4",
 			"likes": 142,
 			"date": "2019-08-23",
 			"price": 60
-		  },
+		},
 		{
 			"id": 95234343,
 			"photographerId": 243,
@@ -400,7 +400,6 @@
 			"date": "2019-07-02",
 			"price": 60
 		},
-
 		{
 			"id": 52343416,
 			"photographerId": 195,

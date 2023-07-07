@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "eslint-plugin-html": "^7.1.0"
+  },
+  "scripts": {
+    "lint": "eslint --ext .html,.js, --max-warnings=0 ."
+  }
+}

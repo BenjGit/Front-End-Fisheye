@@ -5,7 +5,6 @@ body {
     margin: 0;
 }
 
-
 header {
     display: flex;
     flex-direction: row;
@@ -39,10 +38,18 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer_section a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographer_section a h2 {
     color: #D3573C;
     font-size: 36px;
     margin: 0px;
+    
 }
 
 .photographer_section article h3 {
@@ -67,4 +74,5 @@ h1 {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    
 }

@@ -2,10 +2,7 @@ import ModalFocusManager from "./modalFocusManager.js";
 
 export default class LightBox {
   constructor(){
-    const lightboxModalElement = document.getElementById("img_modal");
-    const lightboxFocusManager = new ModalFocusManager(lightboxModalElement);
-    this.lightboxFocusManager = lightboxFocusManager;
-    console.log(lightboxFocusManager)
+    this.lightboxFocusManager = null;
     this.selectedImage = null;
     this.modal = document.getElementById("img_modal");
     this.titleElement = document.querySelector("#img_modal h2");
@@ -14,6 +11,11 @@ export default class LightBox {
     this.prevArrow = document.querySelector(".prev-arrow");
     this.previouslyDisabledEls = [];
 
+    this.init();
+    this.addLightBoxEventListeners();
+  }
+
+  init() {
     this.closeImgBtn.addEventListener("click", () => {
       this.closeModal();
     });
@@ -59,9 +61,6 @@ export default class LightBox {
         this.showPrevMedia(); 
       }
     });
-
-
-    this.addLightBoxEventListeners();
   }
 
   addLightBoxEventListeners() {
@@ -86,8 +85,9 @@ export default class LightBox {
 
   displayModal(index) {
     const overlayMedia = document.getElementById("overlay-media")
-    const selectedImage = document.querySelector(`[data-index="${index}"]`);
+    const selectedImage = document.querySelector(`.medias-container [data-index="${index}"]`);
     const title = selectedImage.dataset.name;
+
     this.titleElement.textContent = title;
     this.modal.style.display = "block";
     this.selectedImage = selectedImage;
@@ -100,7 +100,16 @@ export default class LightBox {
     
     document.body.classList.add("img-open");
     overlayMedia.style.display = "block";
-    this.lightboxFocusManager.setInitialFocus();
+    
+    // Récupérez l'image affichée dans la lightbox
+    const lightboxImage = document.querySelector(`#img_modal [data-index="${index}"]`);
+    const lightboxModalElement = document.getElementById("img_modal");
+    this.lightboxFocusManager = new ModalFocusManager(lightboxModalElement,lightboxImage);
+    console.log(this.lightboxFocusManager);
+
+    // Attendre que l'image soit chargée avant de lui donner le focus
+   
+    this.lightboxFocusManager.setInitialFocus(lightboxImage);
     this.lightboxFocusManager.toggleBackgroundFocus(false);
     this.lightboxFocusManager.trapFocus();
   }
@@ -127,7 +136,7 @@ export default class LightBox {
     const totalMedias = mediaElements.length;
     this.currentIndex = (this.currentIndex + 1) % totalMedias;
     this.showMedia(this.currentIndex);
-    const selectedImage = document.querySelector(`[data-index="${this.currentIndex}"]`);
+    const selectedImage = document.querySelector(`.medias-container [data-index="${this.currentIndex}"]`);
     this.titleElement.textContent = selectedImage.dataset.name;
 
   }
@@ -137,10 +146,8 @@ export default class LightBox {
     const totalMedias = mediaElements.length;
     this.currentIndex = (this.currentIndex - 1 + totalMedias) % totalMedias;
     this.showMedia(this.currentIndex);
-    const selectedImage = document.querySelector(`[data-index="${this.currentIndex}"]`);
+    const selectedImage = document.querySelector(`.medias-container [data-index="${this.currentIndex}"]`);
     this.titleElement.textContent = selectedImage.dataset.name;
-
-        
   }
 
   closeModal() {
@@ -154,7 +161,6 @@ export default class LightBox {
     if (this.selectedImage) {
       this.selectedImage.focus();
     }
-        
   }
 
 }

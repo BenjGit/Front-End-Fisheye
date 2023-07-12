@@ -33,7 +33,7 @@ async function displayData(photographers, medias) {
     })
     totalLikes.textContent = getTotalLikes();
 
-    const sortMedias = new SortMedias(photographerMediasData,photographerModel.name);
+    new SortMedias(photographerMediasData,photographerModel.name);
 }
 
 
@@ -53,8 +53,7 @@ async function init() {
     const contactModalElement = document.getElementById("contact_modal");
     const contactFocusManager = new ModalFocusManager(contactModalElement);
     
-    const contactForm = new ContactForm(contactFocusManager);
-    const lightBox = new LightBox();
+    new ContactForm(contactFocusManager);
 }
 
 

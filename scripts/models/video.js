@@ -24,9 +24,11 @@ export default class Video extends Medias {
     videoSrc.setAttribute('src', `assets/medias/${name.split(' ', 1)[0]}/${this.video}`);
 
     LightBoxVideoContainer.setAttribute('controls', true);
+    LightBoxVideoContainer.setAttribute('tabIndex','1');
+    LightBoxVideoContainer.setAttribute('data-index', index);
+    LightBoxVideoContainer.setAttribute('class', 'photographer-media');
     lightBoxVideoSrc.setAttribute('type', 'video/mp4');
     lightBoxVideoSrc.setAttribute('src', `assets/medias/${name.split(' ', 1)[0]}/${this.video}`);
-    lightBoxVideoSrc.setAttribute('tabIndex','1');
     
     videoContainer.appendChild(videoSrc);
     LightBoxVideoContainer.appendChild(lightBoxVideoSrc);

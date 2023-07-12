@@ -1,13 +1,18 @@
 export default class ModalFocusManager {
-  constructor(modalElement) {
+  constructor(modalElement,elementToFocus) {
     this.logo = document.querySelector('.logo');
     this.logo.focus();
     this.modalElement = modalElement;
+    this.elementToFocus = elementToFocus;
     this.previouslyDisabledEls = [];
+    this.updateFocusableElements();
+  }
+
+  updateFocusableElements() {
     this.focusableEls = this.modalElement.querySelectorAll(
       'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, [tabindex]:not([tabindex="-1"])'
     );
-    this.firstFocusableEl = this.focusableEls[0];
+    this.firstFocusableEl = this.elementToFocus;
     this.lastFocusableEl = this.focusableEls[this.focusableEls.length - 1];
   }
 
@@ -34,7 +39,7 @@ export default class ModalFocusManager {
   }
 
   setInitialFocus() {
-    if (this.firstFocusableEl) {
+   if (this.firstFocusableEl) {
       this.firstFocusableEl.focus();
     }
   }

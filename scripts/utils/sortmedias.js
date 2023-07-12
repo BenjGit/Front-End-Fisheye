@@ -5,6 +5,7 @@ export default class SortMedias {
   constructor(photographerMediasData,photographerName){
     this.photographerName = photographerName
     this.photographerMediasData = photographerMediasData;
+    this.lightBox = new LightBox();
     this.triButton = document.getElementById('tri-button');
     this.triListe = document.getElementById('tri-liste');
     this.triOptions = this.triListe.querySelectorAll('[role="option"]');
@@ -67,10 +68,10 @@ export default class SortMedias {
             mediasContainer.appendChild(mediaCardDOM);
           });
                         
-        //   this.lightBox = new LightBox();
-        //   this.lightBox.addLightBoxEventListeners();
-
           mediasToDelete.forEach(media => media.remove());
+
+          this.lightBox.addLightBoxEventListeners();
+
         }
         if (option.getAttribute('data-value') === 'titre')
         {
@@ -87,11 +88,11 @@ export default class SortMedias {
             mediasModal.appendChild(mediaCardDOM);
             mediasContainer.appendChild(mediaCardDOM);
           });
-                        
-        //   this.lightBox = new LightBox();
-        //   this.lightBox.addLightBoxEventListeners();
-
+        
           mediasToDelete.forEach(media => media.remove());
+
+          this.lightBox.addLightBoxEventListeners();
+
         }
         if (option.getAttribute('data-value') === 'date')
         {   
@@ -113,8 +114,8 @@ export default class SortMedias {
 
           mediasToDelete.forEach(media => media.remove());
 
-        //   this.lightBox = new LightBox();
-        //   this.lightBox.addLightBoxEventListeners();
+          this.lightBox.addLightBoxEventListeners();
+
         }
       });
       option.addEventListener('keydown', (e) => {
@@ -125,13 +126,12 @@ export default class SortMedias {
       });
     });
     this.defaultOptionSelected();
-    this.lightBox = new LightBox();
-    this.lightBox.addLightBoxEventListeners();
   }
 
   defaultOptionSelected(){
     const firstOption = this.triOptions[0];
     firstOption.click();
-    firstOption.click();
+    this.currentArrow.classList.toggle('fa-chevron-down');
+    this.currentArrow.classList.toggle('fa-chevron-up');
   }
 }

@@ -24,6 +24,7 @@ export default class Image extends Medias {
     lightBoxImg.setAttribute('alt', '');
     lightBoxImg.setAttribute('class', 'photographer-media');
     lightBoxImg.setAttribute('tabIndex','1');
+    lightBoxImg.setAttribute('data-index',index);
         
         
 

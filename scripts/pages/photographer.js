@@ -9,6 +9,7 @@ import SortMedias from "./../utils/sortmedias.js";
 import getTotalLikes from "./../utils/totallike.js";
 import ModalFocusManager from "../utils/modalFocusManager.js";
 
+//récupérer l'id du photographe
 function getPhotographerIdFromUrl(){
     let params = (new URL(document.location)).searchParams;
     return params.get('id');
@@ -34,9 +35,9 @@ async function displayData(photographers, medias) {
     totalLikes.textContent = getTotalLikes();
 
     new SortMedias(photographerMediasData,photographerModel.name);
+
+    document.querySelector(".logo").focus();
 }
-
-
 
 
 async function init() {
@@ -46,15 +47,10 @@ async function init() {
 
     displayData(photographers,medias);
 
-    // const lightboxModalElement = document.getElementById("img_modal");
-    // const lightboxFocusManager = new ModalFocusManager(lightboxModalElement);
-    // console.log(lightboxFocusManager);
-
-    const contactModalElement = document.getElementById("contact_modal");
-    const contactFocusManager = new ModalFocusManager(contactModalElement);
-    
-    new ContactForm(contactFocusManager);
+    new ContactForm();
 }
+
+
 
 
 init();

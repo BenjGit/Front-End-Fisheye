@@ -47,7 +47,7 @@ export default class LightBox {
       }
     });
 
-    document.addEventListener('keydown', e => {
+    this.modal.addEventListener('keydown', e => {
       if (e.key === 'Escape') { 
         e.preventDefault(); 
         this.closeModal();
@@ -105,15 +105,11 @@ export default class LightBox {
     const lightboxImage = document.querySelector(`#img_modal [data-index="${index}"]`);
     const lightboxModalElement = document.getElementById("img_modal");
     this.lightboxFocusManager = new ModalFocusManager(lightboxModalElement,lightboxImage);
-    console.log(this.lightboxFocusManager);
-
-    // Attendre que l'image soit chargée avant de lui donner le focus
-   
-    this.lightboxFocusManager.setInitialFocus(lightboxImage);
-    this.lightboxFocusManager.toggleBackgroundFocus(false);
-    this.lightboxFocusManager.trapFocus();
   }
-
+  /**
+   * Permet d'afficher les médias sélectionnés
+   * @param {int} index l'index correspond à l'image sélectionnée
+   */
   showMedia(index) {
     const medias = document.querySelectorAll("#img_modal img, #img_modal video");
     medias.forEach((media, i) => {
@@ -138,7 +134,10 @@ export default class LightBox {
     this.showMedia(this.currentIndex);
     const selectedImage = document.querySelector(`.medias-container [data-index="${this.currentIndex}"]`);
     this.titleElement.textContent = selectedImage.dataset.name;
-
+    const newImage = document.querySelector(`#img_modal [data-index="${this.currentIndex}"]`);
+    newImage.focus();
+    this.lightboxFocusManager.destroy();
+    this.lightboxFocusManager = new ModalFocusManager(this.modal, newImage);
   }
 
   showPrevMedia() {
@@ -148,6 +147,10 @@ export default class LightBox {
     this.showMedia(this.currentIndex);
     const selectedImage = document.querySelector(`.medias-container [data-index="${this.currentIndex}"]`);
     this.titleElement.textContent = selectedImage.dataset.name;
+    const newImage = document.querySelector(`#img_modal [data-index="${this.currentIndex}"]`);
+    newImage.focus();
+    this.lightboxFocusManager.destroy();
+    this.lightboxFocusManager = new ModalFocusManager(this.modal, newImage);
   }
 
   closeModal() {

@@ -1,11 +1,14 @@
 export default class ModalFocusManager {
-  constructor(modalElement,elementToFocus) {
-    this.logo = document.querySelector('.logo');
-    this.logo.focus();
+    constructor(modalElement,elementToFocus) { 
     this.modalElement = modalElement;
     this.elementToFocus = elementToFocus;
     this.previouslyDisabledEls = [];
     this.updateFocusableElements();
+    this.setInitialFocus();
+    this.toggleBackgroundFocus(false);
+    this.trapFocus();
+    this.boundTrapFocus = this.trapFocus.bind(this);
+    document.addEventListener("keydown", this.boundTrapFocus);
   }
 
   updateFocusableElements() {
@@ -24,13 +27,13 @@ export default class ModalFocusManager {
           return;
         }
         if (e.shiftKey) {
-          if (document.activeElement === this.firstFocusableEl) {
+          if (document.activeElement === this.elementToFocus) {
             this.lastFocusableEl.focus();
             e.preventDefault();
           }
         } else {
           if (document.activeElement === this.lastFocusableEl) {
-            this.firstFocusableEl.focus();
+            this.elementToFocus.focus();
             e.preventDefault();
           }
         }
@@ -39,8 +42,8 @@ export default class ModalFocusManager {
   }
 
   setInitialFocus() {
-   if (this.firstFocusableEl) {
-      this.firstFocusableEl.focus();
+   if (this.elementToFocus) {
+      this.elementToFocus.focus();
     }
   }
 
@@ -66,4 +69,9 @@ export default class ModalFocusManager {
       this.previouslyDisabledEls.length = 0;
     }
   }
+
+  destroy() {
+    document.removeEventListener("keydown", this.boundTrapFocus);
+  }
+
 }

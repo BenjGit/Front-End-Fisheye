@@ -21,10 +21,10 @@ export default class PhotographerFactory{
     const img = document.createElement( 'img' );
 
     a.setAttribute('href', `photographer.html?id=${this.id}`);
-    a.setAttribute('tabIndex', '3')
+    a.setAttribute('tabIndex', '0')
     div.setAttribute('class' , 'photographer-infos');
     div.setAttribute('tab' , 'photographer-infos');
-    div.setAttribute('tabIndex', '3');
+    div.setAttribute('tabIndex', '0');
     img.setAttribute('src', this.picture);
     img.setAttribute('alt', 'Portrait du photographe');
     h2.textContent = this.name;
@@ -54,12 +54,12 @@ export default class PhotographerFactory{
     const p = document.createElement( 'p' );
     const priceElement = document.querySelector( '.medias-info-container .price' );
         
-    h2.setAttribute('tabIndex' , '2');
+    h2.setAttribute('tabIndex' , '0');
     photographerInfoDiv.setAttribute( 'class','photographer-infos' );
-    photographerInfoDiv.setAttribute('tabIndex','3');
+    photographerInfoDiv.setAttribute('tabIndex','0');
     img.setAttribute('src', this.picture);
     img.setAttribute('alt', 'Portrait du photographe');
-    img.setAttribute('tabIndex' , '5');
+    img.setAttribute('tabIndex' , '0');
     h2.textContent = this.name;
     h3.textContent = this.city + ', ' + this.country;
     p.textContent = this.tagline;

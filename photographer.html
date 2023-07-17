@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
   </head>
   <body>
     <header class="main-header" role=”banner” >
-      <img tabindex="1" src="assets/images/logo.png" class="logo" />
+      <img tabIndex="0" src="assets/images/logo.png" class="logo" alt="logo du site"/>
     </header>
     <div id="overlay"></div>
     <div id="overlay-media"></div>
@@ -25,25 +25,25 @@
         <div class="photographer-content">
         </div>
         <div class="photographer-contact">
-          <button tabIndex="4" class="contact_button">Contactez-moi</button>
+          <button tabIndex="0" class="contact_button">Contactez-moi</button>
         </div>
         <div id="img_modal">
-          <h2 tabIndex="1"></h2>
-          <div class="prev-arrow" tabIndex="1"><i class="fa-solid fa-chevron-left"></i></div>
-          <div class="next-arrow" tabIndex="1"><i class="fa-solid fa-chevron-right"></i></div>
-          <span class="close-media-btn" tabIndex="1"><i class="fa-solid fa-xmark"></i></i></span>
+          <h2 tabIndex="0"></h2>
+          <div class="prev-arrow" tabIndex="0"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="next-arrow" tabIndex="0"><i class="fa-solid fa-chevron-right"></i></div>
+          <span class="close-media-btn" tabIndex="0"><i class="fa-solid fa-xmark"></i></i></span>
         </div>
         <div class="photographer-img">
         </div>
       </div>
       <div class="main-tri-container">
-        <label tabIndex="6" id="tri-label" class="sort-text">Trier par :</label>
+        <label tabIndex="0" id="tri-label" class="sort-text">Trier par :</label>
         <div class="tri-container">
-          <button tabIndex="7" id="tri-button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="tri-label"><i class="fa-solid fa-chevron-down"></i></button>
+          <button tabIndex="0" id="tri-button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="tri-label"><i class="fa-solid fa-chevron-down"></i></button>
             <ul id="tri-liste" role="listbox" aria-labelledby="tri-label">
-              <li tabIndex="7" role="option" data-value="popularite">Popularité</li>
-              <li tabIndex="7" role="option" data-value="date">Date</li>
-              <li tabIndex="7"role="option" data-value="titre">Titre</li>
+              <li tabIndex="0" role="option" data-value="popularite">Popularité</li>
+              <li tabIndex="0" role="option" data-value="date">Date</li>
+              <li tabIndex="0"role="option" data-value="titre">Titre</li>
             </ul>
         </div>
       </div>
@@ -59,16 +59,16 @@
 					<div> 
             <h2 tabIndex="0" class="photographer-name"></h2> 
 						<label tabIndex="0" for="prenom">Prénom</label>
-						<input tabIndex="0" name="prenom"/>
+						<input tabIndex="0" name="prenom" id="prenom"/>
             <label tabIndex="0" for="nom">Nom</label>
-						<input tabIndex="0" name="nom"/>
-            <label tabIndex="0" for="email">Email</label>
-						<input tabIndex="0" name="email" type="email"/>
-            <label tabIndex="0">Votre Message</label>
-            <input tabIndex="0" class="message" name="message"/>
+						<input tabIndex="0" name="nom" id="nom"/>
+            <label tabIndex="0" for="email" >Email</label>
+						<input tabIndex="0" name="email" type="email" id="email"/>
+            <label tabIndex="0" for="message">Votre Message</label>
+            <input tabIndex="0" class="message" name="message" id="message"/>
 					</div>
           <button tabIndex="0" class="submit_btn contact_button">Envoyer</button>
-          <img tabIndex="0" class="close-btn" src="assets/icons/close.svg"/>
+          <img tabIndex="0" class="close-btn" src="assets/icons/close.svg" alt="bouton de fermeture de la modale"/>
 				</form>
 			</div>
 		</div>

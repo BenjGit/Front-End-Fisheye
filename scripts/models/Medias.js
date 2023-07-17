@@ -24,11 +24,11 @@ export default class Medias{
     
     mediaContainer.setAttribute('class','medias-container');
     mediaContent.setAttribute('class', 'medias-content');
-    mediaTitle.setAttribute('tabIndex','8');
+    mediaTitle.setAttribute('tabIndex','0');
     likesContainer.setAttribute('class', 'likes-container');
     heartIcon.setAttribute('class', 'fa-regular fa-heart');
     heartIcon.setAttribute('aria-label', 'likes')
-    heartIcon.setAttribute('tabIndex','8');
+    heartIcon.setAttribute('tabIndex','0');
     mediaTitle.textContent = this.title;
     mediaLikes.textContent = this.likes;
 

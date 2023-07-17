@@ -1,8 +1,11 @@
+import ModalFocusManager from "./modalFocusManager.js";
+
 export default class ContactForm {
-  constructor(contactFocusManager){
-    this.contactFocusManager = contactFocusManager;
+  constructor(){
+    this.contactFocusManager = null;
     this.openContactBtn = document.querySelector(".contact_button");
     this.closeContactBtn = document.querySelector(".close-btn");
+    this.modalElement = document.getElementById("contact_modal");
 
     this.openContactBtn.addEventListener("click", () => {
       this.displayModal();
@@ -13,12 +16,13 @@ export default class ContactForm {
     });
 
     this.closeContactBtn.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
         this.closeModal();
       }
     });
 
-    document.addEventListener('keydown', e => {
+    this.modalElement.addEventListener('keydown', e => {
       if (e.key === 'Escape') { 
         e.preventDefault(); 
         this.closeModal();
@@ -35,18 +39,21 @@ export default class ContactForm {
 
     // Affiche le fond semi-transparent
     document.getElementById("overlay").style.display = "block";
-    this.contactFocusManager.setInitialFocus();
-    this.contactFocusManager.toggleBackgroundFocus(false);
-    this.contactFocusManager.trapFocus();
+    const contactModalElement = document.getElementById("contact_modal");
+    const contactElementToFocus = document.querySelector(".modal h2")
+    this.contactFocusManager = new ModalFocusManager(contactModalElement,contactElementToFocus);
   }
 
   closeModal() {
     const modal = document.getElementById("contact_modal");
+    const currentButton = document.querySelector(".contact_button")
     modal.style.display = "none";
     document.body.classList.remove("modal-open");
     // Masque le fond semi-transparent
     document.getElementById("overlay").style.display = "none";
     this.contactFocusManager.toggleBackgroundFocus(true);
+    this.contactFocusManager.destroy();
+    currentButton.focus();
   }
   
   displayDataConsole(){

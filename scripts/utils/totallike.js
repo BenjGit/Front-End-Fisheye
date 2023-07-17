@@ -3,7 +3,6 @@ export default function getTotalLikes(){
   const medias = document.querySelectorAll('.medias-container');
   medias.forEach(media => {
     totalLikes += parseInt(media.querySelector('.likes-container p').textContent);
-    // console.log(media)
   });
     
   return totalLikes;

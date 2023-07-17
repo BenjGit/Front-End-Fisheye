@@ -81,14 +81,12 @@ export default class ContactForm {
         console.log("Veuillez entrer 2 caractères ou plus pour le prénom");
         event.preventDefault();
         isValid = false;
-          
       }
     
       if(nom.length < 2 || nom.length > 50){
         console.log("Veuillez entrer 2 caractères ou plus pour le nom");
         event.preventDefault();
         isValid = false;
-          
       }
 
       if (!isValid) {

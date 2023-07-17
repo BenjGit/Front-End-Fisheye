@@ -14,8 +14,18 @@ export default class SortMedias {
     const firstOptionText = firstOption.textContent;
     this.triButton.textContent = firstOptionText + " ";
     this.triButton.appendChild(this.currentArrow);
+    this.init();
+    this.defaultOptionSelected();
+  }
 
+  defaultOptionSelected(){
+    const firstOption = this.triOptions[0];
+    firstOption.click();
+    this.currentArrow.classList.toggle('fa-chevron-down');
+    this.currentArrow.classList.toggle('fa-chevron-up');
+  }
 
+  init() {
     this.triButton.addEventListener('click', () => {
       const expanded = this.triButton.getAttribute('aria-expanded') === 'true' || false;
       this.triButton.setAttribute('aria-expanded', !expanded);
@@ -125,13 +135,5 @@ export default class SortMedias {
         }
       });
     });
-    this.defaultOptionSelected();
-  }
-
-  defaultOptionSelected(){
-    const firstOption = this.triOptions[0];
-    firstOption.click();
-    this.currentArrow.classList.toggle('fa-chevron-down');
-    this.currentArrow.classList.toggle('fa-chevron-up');
   }
 }

@@ -1,5 +1,5 @@
-import PhotographerFactory from './../factories/photographer.js';                                   
-import getPhotographers from './../models/photographer.js';
+import PhotographerFactory from "./../factories/photographer.js";
+import getPhotographers from "./../models/photographer.js";
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
@@ -15,8 +15,7 @@ async function init() {
   // Récupère les datas des photographes
   const { photographers } = await getPhotographers();
   displayData(photographers);
-  document.querySelector('.logo').focus;
+  document.querySelector(".logo").focus;
 }
 
 init();
-    

@@ -1,5 +1,5 @@
 export default class ModalFocusManager {
-    constructor(modalElement,elementToFocus) { 
+  constructor(modalElement, elementToFocus) {
     this.modalElement = modalElement;
     this.elementToFocus = elementToFocus;
     this.previouslyDisabledEls = [];
@@ -42,7 +42,7 @@ export default class ModalFocusManager {
   }
 
   setInitialFocus() {
-   if (this.elementToFocus) {
+    if (this.elementToFocus) {
       this.elementToFocus.focus();
     }
   }
@@ -73,5 +73,4 @@ export default class ModalFocusManager {
   destroy() {
     document.removeEventListener("keydown", this.boundTrapFocus);
   }
-
 }
